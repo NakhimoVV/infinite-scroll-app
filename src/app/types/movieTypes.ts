@@ -1,8 +1,8 @@
 export interface IMovie {
     movie_id: number
+    poster_path: string
     original_title: string
     overview: string
-    poster_path: string
     release_date: string
     popularity: number
 }

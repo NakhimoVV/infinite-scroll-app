@@ -1,7 +1,43 @@
 .item {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(150px, 220px) repeat(2, 1fr) repeat(2, 0.5fr);
+    grid-template-rows: 0.5fr 1fr;
+    grid-column-gap: 10px;
     border: var(--border);
     padding-block: 20px;
-    padding-inline: 15px;
+    padding-inline: 25px;
+    background-color: var(--color-dark-m);
     border-radius: var(--border-radius);
+
+    &__image {
+        grid-row: span 2;
+    }
+    &__title {
+        grid-column: 2/4;
+        grid-row: 1/2;
+    }
+    &__overview {
+        grid-column: 2/4;
+        grid-row: 2/3;
+    }
+    &__stats {
+        grid-row: span 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &-release {
+        }
+        &-popularity {
+        }
+    }
+    &__actions {
+        grid-row: span 2;
+
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
 }

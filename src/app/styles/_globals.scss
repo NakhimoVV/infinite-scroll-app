@@ -47,3 +47,11 @@ h4 {
 .wrapper {
     padding: 30px 50px;
 }
+
+.image {
+    background-color: var(--color-accent);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    @include flex-center;
+}

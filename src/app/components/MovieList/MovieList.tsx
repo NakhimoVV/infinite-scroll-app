@@ -8,7 +8,6 @@ import { IMovie } from '../../types'
 
 const MovieList: React.FC = observer(() => {
     const fetchingMovies = useCallback(() => movieStore.fetchMovies(), [])
-    // const hasMore = useMemo(() => movieStore.hasMore, [])
 
     const { lastElementRef } = useInfinitieScroll({
         action: fetchingMovies,
@@ -21,20 +20,24 @@ const MovieList: React.FC = observer(() => {
         }
     }, [])
 
+    const handleRemoveItem = (id: number) => {
+        movieStore.removeMovieById(id)
+    }
+
     return (
-        <div>
+        <>
             <ul className={style.list}>
-                {movieStore.movies.map((movie: IMovie, index: number) => (
+                {movieStore.movies.map((movie: IMovie) => (
                     <MovieItem
                         key={movie.movie_id}
-                        i={index + 1}
+                        onRemove={() => handleRemoveItem(movie.movie_id)}
                         data={movie}
                     />
                 ))}
             </ul>
             {movieStore.isLoading && <p>Loading...</p>}
             <div ref={lastElementRef} className={style.triggerBlock}></div>
-        </div>
+        </>
     )
 })
 
