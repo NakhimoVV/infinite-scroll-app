@@ -1,0 +1,17 @@
+:root {
+    --color-dark: #323549;
+    --color-ligth: #e7f1f1;
+    --color-accent: #16c58b;
+    --color-gray: #b6b6aa;
+
+    --border: 1px solid var(--color-accent);
+    --border-radius: 15px;
+
+    --font-family-base: sans-serif;
+    --container-width: 1220px;
+    --container-padding-x: 15px;
+
+    --button-height: 65px;
+
+    --transition-duration: 0.2s;
+}
