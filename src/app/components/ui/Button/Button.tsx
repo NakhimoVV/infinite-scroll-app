@@ -1,10 +1,10 @@
 import { ReactNode, FC } from 'react'
 
-interface Button {
+interface ButtonProps {
     children?: ReactNode
 }
 
-const Button: FC<Button> = ({ children }) => {
+const Button: FC<ButtonProps> = ({ children }) => {
     return <button type="button">{children}</button>
 }
 

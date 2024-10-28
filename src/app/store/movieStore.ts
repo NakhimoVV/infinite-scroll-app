@@ -5,16 +5,16 @@ import configFile from '../config.json'
 
 class MovieStore {
     movies: IMovie[] = []
-    isLoading: boolean = false
-    currentPage: number = 1
+    isLoading = false
+    currentPage = 1
     errorFetch: unknown | null = null
-    hasMore: boolean = true
+    hasMore = true
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    async fetchMovies() {
+    async fetchMovies(): Promise<void> {
         if (this.isLoading || !this.hasMore) return
         this.isLoading = true
         try {
@@ -41,16 +41,16 @@ class MovieStore {
         }
     }
 
-    removeMovieById(id: string) {
+    removeMovieById(id: number) {
         runInAction(() => {
-            this.movies = this.movies.filter((movie) => movie.id !== id)
+            this.movies = this.movies.filter((movie) => movie.movie_id !== id)
         })
     }
 
-    editMovie(id: string, updatedData: Partial<IMovie>) {
+    editMovie(id: number, updatedData: Partial<IMovie>) {
         runInAction(() => {
             this.movies = this.movies.map((movie) =>
-                movie.id === id ? { ...movie, ...updatedData } : movie
+                movie.movie_id === id ? { ...movie, ...updatedData } : movie
             )
         })
     }
