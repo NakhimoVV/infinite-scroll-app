@@ -1,5 +1,6 @@
-import { FC, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 import Spinner from './Spinner/Spinner'
+import useInView from '../../hooks/useInView'
 
 interface ImageProp {
     src: string
@@ -11,23 +12,32 @@ interface ImageProp {
 
 const Image: FC<ImageProp> = ({ src, width, height, alt = '', style }) => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false)
+    const imgRef = useRef<HTMLDivElement | null>(null)
+
+    const inView = useInView(imgRef)
 
     const handleLoad = () => {
         setIsLoaded(true)
     }
 
     return (
-        <div className={`${style} image`} style={{ width, height }}>
+        <div
+            ref={imgRef}
+            className={`${style} image`}
+            style={{ width, height }}
+        >
             {!isLoaded && <Spinner />}
-            <img
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                className={style}
-                loading="lazy"
-                onLoad={handleLoad}
-            />
+            {(inView || isLoaded) && (
+                <img
+                    src={src}
+                    alt={alt}
+                    width={width}
+                    height={height}
+                    className={style}
+                    loading="lazy"
+                    onLoad={handleLoad}
+                />
+            )}
         </div>
     )
 }

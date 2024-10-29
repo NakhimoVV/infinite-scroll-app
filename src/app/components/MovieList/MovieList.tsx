@@ -7,6 +7,7 @@ import useInfinitieScroll from '../../hooks/useInfinitieScroll'
 import { IMovie } from '../../types'
 import Modal from '../ui/Modal/Modal'
 import EditMovie from '../EditMovie/EditMovie'
+import Loader from '../ui/Loader/Loader'
 
 const MovieList: React.FC = observer(() => {
     const fetchingMovies = useCallback(() => movieStore.fetchMovies(), [])
@@ -33,8 +34,13 @@ const MovieList: React.FC = observer(() => {
         setIsModalOpen(true)
     }
 
+    const handleCloseModal = () => {
+        setSelectedMovie(null)
+        setIsModalOpen(false)
+    }
+
     return (
-        <>
+        <div className={style['list-wrapper']}>
             <ul className={style.list}>
                 {movieStore.movies.map((movie: IMovie) => (
                     <MovieItem
@@ -45,18 +51,18 @@ const MovieList: React.FC = observer(() => {
                     />
                 ))}
             </ul>
-            {movieStore.isLoading && <p>Loading...</p>}
+            {movieStore.isLoading && <Loader />}
             <div ref={lastElementRef} className={style.triggerBlock}></div>
 
             {isModalOpen && selectedMovie && (
-                <Modal onClose={() => setIsModalOpen(false)}>
+                <Modal onClose={handleCloseModal}>
                     <EditMovie
                         movie={selectedMovie}
-                        onClose={() => setIsModalOpen(false)}
+                        onClose={handleCloseModal}
                     />
                 </Modal>
             )}
-        </>
+        </div>
     )
 })
 

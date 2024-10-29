@@ -9,7 +9,7 @@ interface EditMovieProps {
 
 const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
     const [data, setData] = useState({
-        originalTitle: movie.original_title,
+        original_title: movie.original_title,
         overview: movie.overview,
         popularity: movie.popularity
     })
@@ -18,7 +18,6 @@ const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         const { value, name } = e.target
-        console.log('RENDER: !')
         setData((prev) => ({
             ...prev,
             [name]: value
@@ -28,6 +27,7 @@ const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         movieStore.editMovie(movie.movie_id, data)
+
         onClose()
     }
 
@@ -37,8 +37,8 @@ const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
                 Original Title:
                 <input
                     type="text"
-                    name="originalTitle"
-                    value={data.originalTitle}
+                    name="original_title"
+                    value={data.original_title}
                     onChange={handleChange}
                 />
             </label>

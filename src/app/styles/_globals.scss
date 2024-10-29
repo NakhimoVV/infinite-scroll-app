@@ -46,6 +46,8 @@ h4 {
 
 .wrapper {
     padding: 30px 50px;
+
+    @include flex-center;
 }
 
 .image {
