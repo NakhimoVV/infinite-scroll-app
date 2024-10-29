@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { IMovie } from '../../types'
 import { movieStore } from '../../store/movieStore'
+import style from './EditMovie.module.scss'
 
 interface EditMovieProps {
     movie: IMovie
@@ -32,9 +33,9 @@ const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style.form}>
             <label>
-                Original Title:
+                <p>Original Title:</p>
                 <input
                     type="text"
                     name="original_title"
@@ -43,7 +44,7 @@ const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
                 />
             </label>
             <label>
-                Overview:
+                <p>Overview:</p>
                 <textarea
                     name="overview"
                     value={data.overview}
@@ -51,7 +52,7 @@ const EditMovie: FC<EditMovieProps> = ({ movie, onClose }) => {
                 />
             </label>
             <label>
-                Popularity:
+                <p>Popularity:</p>
                 <input
                     name="popularity"
                     type="number"

@@ -1,9 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen, fireEvent } from '@testing-library/react'
+import App from './App'
+import Button from './components/ui/Button/Button'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('TEST APP', () => {
+    test('Has the DOM structure component App', () => {
+        render(<App />)
+        const mainComponent = screen.getByRole('main')
+        expect(mainComponent).toBeInTheDocument()
+    })
+    test('Button', () => {
+        render(<Button />)
+        const btn = screen.getByTestId('testBtn')
+        fireEvent.click(btn, {})
+        expect(screen.queryByTestId('testBtn')).toBeInTheDocument()
+    })
+})

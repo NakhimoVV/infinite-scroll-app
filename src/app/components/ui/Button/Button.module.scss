@@ -2,6 +2,21 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
-    border: 1px solid var(--color-gray);
+    background-color: var(--color-dark);
+    border: var(--border);
+    width: 80px;
+    height: var(--button-height);
+    border-radius: var(--border-radius);
+    box-shadow: 0.2rem 0.2rem 0.5rem var(--color-accent),
+        -0.1rem -0.1rem 0.4rem #ffffff;
+    transition: 0.3s ease;
+    color: inherit;
+
+    &:hover {
+        color: var(--color-accent);
+    }
+    &:active {
+        box-shadow: inset 0.2rem 0.2rem 0.5rem var(--color-accent),
+            inset -0.1rem -0.1rem 0.1rem #ffffff;
+    }
 }

@@ -11,20 +11,24 @@
 }
 
 .modalContent {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    background: var(--color-gray);
+    padding: 35px 45px 20px 45px;
+    border-radius: var(--border-radius);
     max-width: 500px;
     width: 100%;
     position: relative;
 }
 
 .modalClose {
+    display: inline-flex;
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 10px;
-    background: none;
     border: none;
+    background: none;
     font-size: 1.5rem;
-    cursor: pointer;
+    padding: 0px 10px;
+    &:hover {
+        color: #e45151;
+    }
 }

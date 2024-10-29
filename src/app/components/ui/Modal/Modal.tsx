@@ -13,7 +13,7 @@ const Modal: FC<ModalProps> = ({ onClose, children }) => {
                 className={style.modalContent}
                 onClick={(e) => e.stopPropagation()}
             >
-                <button className={style.closeButton} onClick={onClose}>
+                <button className={style.modalClose} onClick={onClose}>
                     &times;
                 </button>
                 {children}

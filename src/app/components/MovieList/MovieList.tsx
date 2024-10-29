@@ -18,7 +18,7 @@ const MovieList: React.FC = observer(() => {
         action: fetchingMovies,
         dependency: movieStore.hasMore
     })
-    // Первая загрузка фильмов
+
     useEffect(() => {
         if (movieStore.movies.length === 0) {
             movieStore.fetchMovies()
