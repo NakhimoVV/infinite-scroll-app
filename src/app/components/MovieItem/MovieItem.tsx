@@ -7,9 +7,10 @@ import Image from '../ui/Image'
 type MovieItemProps = {
     data: IMovie
     onRemove: () => void
+    onEdit: () => void
 }
 
-const MovieItem: FC<MovieItemProps> = ({ data, onRemove }) => {
+const MovieItem: FC<MovieItemProps> = ({ data, onRemove, onEdit }) => {
     return (
         <li className={style.item}>
             <Image
@@ -26,7 +27,7 @@ const MovieItem: FC<MovieItemProps> = ({ data, onRemove }) => {
                 <span>{data.popularity}</span>
             </div>
             <div className={style.item__actions}>
-                <Button>edit</Button>
+                <Button onClick={onEdit}>edit</Button>
                 <Button onClick={onRemove}>X</Button>
             </div>
         </li>
