@@ -12,6 +12,11 @@ The application is a test solution
 • Jest\
 • React Testing Library
 
+### Note
+
+!!! Pictures may not upload with apiEndPoint\
+-- Answer -- use VPN
+
 ### Tags
 
 IntersectionObserverAPI
